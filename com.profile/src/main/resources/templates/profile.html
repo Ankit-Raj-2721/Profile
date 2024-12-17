@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <style>
+/* General styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for profile details */
+div {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #ff6f61;
+}
+
+/* Header styles */
+h1 {
+    color: #ff6f61;
+    margin-bottom: 20px;
+    font-size: 28px;
+    border-bottom: 2px solid #ff6f61;
+    padding-bottom: 10px;
+}
+
+/* Paragraph and strong tag styles */
+p {
+    color: #333333;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+strong {
+    color: #ff6f61;
+}
+
+/* Image styles */
+img {
+    max-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+    border: 4px solid #ff6f61;
+}
+
+/* Link styles */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ff6f61;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: #d9534f;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div>
+    	<h1>Profile Details</h1>
+    	
+        <p><strong>Name:</strong> <span th:text="${profile.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${profile.email}"></span></p>
+        <p><strong>Date of Birth:</strong> <span th:text="${profile.dob}"></span></p>
+        <p><strong>Gender:</strong> <span th:text="${profile.gender}"></span></p>
+        <p><strong>City:</strong> <span th:text="${profile.city}"></span></p>
+        <p><strong>Photo:</strong></p>
+        
+        <img th:if="${profile.photoBase64}" th:src="'data:image/jpeg;base64,' + ${profile.photoBase64}" alt="Profile Photo" />
+        <p th:if="${!profile.photoBase64}">No photo available</p>
+    </div>
+    <a href="/create">Back to Form</a>
+</body>
+</html>
